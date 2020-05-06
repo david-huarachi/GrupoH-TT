@@ -1,8 +1,19 @@
 Rodriguez Juan Manuel y Huarachi David
-La idea es hacer un juego de plataforma donde el personaje tenga que sortear distintos obstaculos para poder llegar a la meta y subir la dificultad del siguiente escenario
-Profesor hemos decidido tomar su sugerencia y realizar nuestro juego de platarforma, hacerlo multijugador, incluir bots y que se desarolle en un laberinto 2D diferente cada vez.
+La idea es hacer un juego de plataforma donde el personaje tenga que sortear distintos obstaculos para poder llegar a la meta 
+y subir la dificultad del siguiente escenario
+Profesor hemos decidido tomar su sugerencia y realizar nuestro juego de platarforma, que el usuario pueda elegir entre jugar solo
+o poder elegir el modo multijugador, incluir bots que serian los enemigos creados en el mapa 
+y que se desarolle en un ecenario 2D cada vez que el jugador avance al siguiente niver haci tambien aumentando la dificultad del mismo
+
 Cada jugador tendrá 3 vidas
-La unica forma de derrotar a los enemigos es saltando y cayendo sobre la cabeza de los mismos, de otra manera al colisionar con ellos de frente o por detras perderiamos 1 vida. 
+La unica forma de derrotar a los enemigos es saltando y cayendo sobre la cabeza de los mismos, de otra manera al colisionar 
+con ellos de frente o por detras perderiamos 1 vida. 
 Los sprites los creariamos nosotros mismos con el diseño del personaje y los enemigos.
 Cada vez que se avance de nivel se aumentaria la dificultad, ya sea con enemigos, objetos o trampas en el camino.
 Los items que se pueden agarrar serian los siguientes:
+
+- Beneficiosos: - Elixir: 1 Vida extra
+                - Escudo mágico: Inmunidad
+                - Capa de llamas: matas a los enemigos con solo tocarlos
+- Perjudiciales:- Muñeco maldito: pierdes todos tus beneficios
+                - Veneno: pierdes 1 de tus vidas, si solo te queda 1 pierdes
