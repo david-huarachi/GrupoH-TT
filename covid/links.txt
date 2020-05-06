@@ -1,1 +1,8 @@
 Aqui van los links de descarga de las mascaras covid
+
+
+https://3dprint.nih.gov/sites/default/files/models/3d_model_files/Mask-100-percent-Large-v2_0.stl
+
+https://3dprint.nih.gov/sites/default/files/models/3d_model_files/DtM-v4.0_0.stl
+
+https://3dprint.nih.gov/sites/default/files/models/3d_model_files/OESHfacemaskLARGE_4-9-20_0.stl
