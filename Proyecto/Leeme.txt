@@ -3,7 +3,7 @@ La idea es hacer un juego de plataforma donde el personaje tenga que sortear dis
 y subir la dificultad del siguiente escenario
 Profesor hemos decidido tomar su sugerencia y realizar nuestro juego de platarforma, que el usuario pueda elegir entre jugar solo
 o poder elegir el modo multijugador, incluir bots que serian los enemigos creados en el mapa 
-y que se desarolle en un ecenario 2D cada vez que el jugador avance al siguiente niver haci tambien aumentando la dificultad del mismo
+y que se desarolle en un ecenario 2D cada vez que el jugador avance al siguiente nivel haci tambien aumentando la dificultad del mismo
 
 Cada jugador tendrá 3 vidas
 La unica forma de derrotar a los enemigos es saltando y cayendo sobre la cabeza de los mismos, de otra manera al colisionar 
