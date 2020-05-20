@@ -1,1 +1,17 @@
+sNum=input("Introducir un número de máximo 4 dígitos y al menos 2 deben ser diferentes") #Se le pide al usuario que ingrese un numero
+print(sNum)
+num=int(sNum)
+numR=0
+for k in range(7): #Máximo 7 iteraciones
+    sNum="{:04d}".format(num)              #agrega los 0 adelant para que se forme una cadena de 4 digitos
+    sNumG="".join(sorted(sNum,reverse=True)) #ordena la cadena en orden decreciente
+    sNumP="".join(sorted(sNum))             #ordena la cadena en orden ascendente
+    num=int(sNumG)-int(sNumP) #pasamos de valores alfanumericos a numericos y se hace la resta aritmetica
+    if num==numR:             #confirmamos que el resultado de la resta es igual a la constante de kaprekar y cortamos el bucle
+         break
+    numR=num
+    print(sNumG,"-",sNumP,"=",num,k) #mostramos el proceso de la resta y las iteraciones
+
+print ("----------------")
+print ("final", numR,"Iteraciones:",k) #mostramos el resultado por pantalla
 
