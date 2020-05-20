@@ -1,0 +1,19 @@
+constante de Kaprekar en Python
+
+
+sNum=input("Introducir un numero de maximo 4 digitos al menos 2 diferentes: ")   #se introduce el numero de 4 digitos
+print(sNum)            #imprimimos el pantalla el valor
+num=int(sNum)          #convertir el valor alfanumerico en numerico
+numR=0                 #variable para mantener el resultado de la resta 
+for k in range(99):    #bucle Maximo 99 interaciones
+    sNum="{:04d}".format(num)                #123   -->"0123"
+    sNumG="".join(sorted(sNum,reverse=True)) #hallar el numero grande ordenando los caracteres de mayor a menor  "0123" -->"3210 " 
+    sNumP="".join(sorted(sNum))                #ordenar de menor a mayor,  "4563" --> "3456" 
+    num=int(sNumG)-int(sNumP)               #se realiza la resta del mayor al menor 
+    print(sNumG,sNumP,num,"({:02d})".format(k+1))    #se imprime en pantalla la operacion resta y el resultado 
+    if num==numR:                                     
+     	break       
+    numR=num   
+print ("-----------")  
+print ("final",num,numR,"Iteraciones:",k+1)
+
