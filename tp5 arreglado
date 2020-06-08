@@ -1,0 +1,31 @@
+contadorNum = input("Ingrese la cantidad de casos de prueba") #Le pedimos al usuario que agregue la cantidad de casos que quiere probar
+matriz = int(contadorNum)                                    #Transformamos lo ingresado a entero
+lista = []                                                   #Creamos un arreglo vacío en el que luego se guardarán los números que el usuario ingrese
+contador = 0
+numR = 0
+while contador != matriz:                                    #Utilizamos un while con un contador para verficar que el usuario pueda ingresar la cantidad de casos que queria probar anteriormente
+    a = int(input("Ingrese Un caso de prueba"))
+    lista.append(a)                                          #se guarda el numero ingresado por el usuario en el arreglo
+    contador = contador + 1
+    if contador == matriz:
+        break
+
+print("La entrada es:")
+print(matriz)
+
+for i in lista:
+    print(i)
+print("--------------------")
+print("La salida es:")
+for i in lista:
+    for k in range(7):  # Máximo 7 iteraciones
+        sNum = "{:04d}".format(i)  # agrega los 0 adelante para que se forme una cadena de 4 digitos
+        sNumG = "".join(sorted(sNum, reverse=True))  # ordena la cadena en orden decreciente
+        sNumP = "".join(sorted(sNum))  # ordena la cadena en orden ascendente
+        i = int(sNumG) - int(sNumP)  # pasamos de valores alfanumericos a numericos y se hace la resta aritmetica
+        if i == numR:  # confirmamos que el resultado de la resta es igual a la constante de kaprekar y cortamos el bucle
+            break
+        numR = i
+
+
+    print(k)  # mostramos el resultado por pantalla
