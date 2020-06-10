@@ -1,0 +1,129 @@
+import pygame
+ 
+
+NEGRO = (0, 0, 0) 
+BLANCO = (255, 255, 255) 
+AZUL = (0, 0, 255)
+ROJO = (255, 0, 0)
+VERDE = (0, 255, 0)
+ 
+
+LARGO_PANTALLA = 800
+ALTO_PANTALLA = 600
+ 
+class Protagonista(pygame.sprite.Sprite): 
+
+   
+    cambio_x = 0
+    cambio_y = 0
+     
+
+    nivel = None
+   
+    def _init_(self): 
+    
+         
+     
+        super()._init_() 
+         
+       
+        largo = 40
+        alto = 60
+        self.image = pygame.Surface([largo, alto])
+        self.image.fill(ROJO)        
+   
+      
+        self.rect = self.image.get_rect() 
+       
+    def update(self): 
+      
+        self.calc_grav()
+         
+     
+        self.rect.x += self.cambio_x
+         
+      
+        lista_impactos_bloques = pygame.sprite.spritecollide(self, self.nivel.listade_plataformas, False)
+        for bloque in lista_impactos_bloques:
+           
+            if self.cambio_x > 0:
+                self.rect.right = bloque.rect.left
+            elif self.cambio_x < 0:
+         
+                self.rect.left = bloque.rect.right
+ 
+   
+        self.rect.y += self.cambio_y
+         
+   
+        lista_impactos_bloques = pygame.sprite.spritecollide(self, self.nivel.listade_plataformas, False) 
+        for bloque in lista_impactos_bloques:
+ 
+            
+            if self.cambio_y > 0:
+                self.rect.bottom = bloque.rect.top 
+            elif self.cambio_y < 0:
+                self.rect.top = bloque.rect.bottom
+ 
+            
+            self.cambio_y = 0
+ 
+    def calc_grav(self):
+        
+        if self.cambio_y == 0:
+            self.cambio_y = 1
+        else:
+            self.cambio_y += .35
+ 
+
+        if self.rect.y >= ALTO_PANTALLA - self.rect.height and self.cambio_y >= 0:
+            self.cambio_y = 0
+            self.rect.y = ALTO_PANTALLA - self.rect.height
+ 
+    def saltar(self):
+       
+        self.rect.y += 2
+        lista_impactos_plataforma = pygame.sprite.spritecollide(self, self.nivel.listade_plataformas, False)
+        self.rect.y -= 2
+         
+        
+        if len(lista_impactos_plataforma) > 0 or self.rect.bottom >= ALTO_PANTALLA:
+            self.cambio_y = -10
+             
+   
+    def ir_izquierda(self):
+        
+        self.cambio_x = -6
+ 
+    def ir_derecha(self):
+        
+        self.cambio_x = 6
+ 
+    def stop(self):
+        
+        self.cambio_x = 0
+                    
+class Plataforma(pygame.sprite.Sprite):
+   
+ 
+    def _init_(self, largo, alto ):
+        
+        super()._init_()
+         
+        self.image = pygame.Surface([largo, alto])
+        self.image.fill(VERDE)    
+                 
+        self.rect = self.image.get_rect()
+  
+class Nivel(object):
+   
+         
+    def _init_(self, protagonista):
+      
+        self.listade_plataformas = pygame.sprite.Group()
+        self.listade_enemigos = pygame.sprite.Group()
+        self.protagonista = protagonista
+ 
+         
+       
+        self.imagende_fondo = None
