@@ -1,0 +1,121 @@
+def update(self):
+       
+        self.listade_plataformas.update()
+        self.listade_enemigos.update()
+     
+    def draw(self, pantalla):
+        
+        pantalla.fill(AZUL)
+                   
+      
+        self.listade_plataformas.draw(pantalla)
+        self.listade_enemigos.draw(pantalla)
+ 
+
+class Nivel_01(Nivel):
+    
+ 
+    def _init_(self, protagonista):
+       
+         
+     
+        Nivel._init_(self, protagonista)
+         
+    
+        nivel = [ [210, 70, 500, 500],
+                  [210, 70, 200, 400],
+                  [210, 70, 600, 300],
+                  ]
+ 
+   
+        for plataforma in nivel:
+            bloque = Plataforma(plataforma[0], plataforma[1])
+            bloque.rect.x = plataforma[2]
+            bloque.rect.y = plataforma[3]
+            bloque.protagonista = self.protagonista
+            self.listade_plataformas.add(bloque)                      
+ 
+def main():
+   
+    pygame.init() 
+        
+  
+    dimensiones = [LARGO_PANTALLA, ALTO_PANTALLA] 
+    pantalla = pygame.display.set_mode(dimensiones) 
+       
+    pygame.display.set_caption("Saltador de Plataformas") 
+     
+
+    protagonista = Protagonista()
+ 
+
+    listade_niveles = []
+    listade_niveles.append(Nivel_01(protagonista))
+     
+    
+    nivel_actual_no = 0
+    nivel_actual = listade_niveles[nivel_actual_no]
+     
+    lista_sprites_activos = pygame.sprite.Group()
+    protagonista.nivel = nivel_actual
+     
+    protagonista.rect.x = 340
+    protagonista.rect.y = ALTO_PANTALLA - protagonista.rect.height
+    lista_sprites_activos.add(protagonista)
+
+    hecho = False
+       
+  
+    reloj = pygame.time.Clock() 
+       
+
+    while not hecho: 
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT: 
+                hecho = True 
+     
+            if evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_LEFT:
+                    protagonista.ir_izquierda()
+                if evento.key == pygame.K_RIGHT:
+                    protagonista.ir_derecha()
+                if evento.key == pygame.K_UP:
+                    protagonista.saltar()
+                     
+            if evento.type == pygame.KEYUP:
+                if evento.key == pygame.K_LEFT and protagonista.cambio_x < 0: 
+                    protagonista.stop()
+                if evento.key == pygame.K_RIGHT and protagonista.cambio_x > 0:
+                    protagonista.stop()
+ 
+        
+        lista_sprites_activos.update()
+         
+        
+        nivel_actual.update()
+         
+        
+        if protagonista.rect.right > LARGO_PANTALLA:
+            protagonista.rect.right = LARGO_PANTALLA
+     
+      
+        if protagonista.rect.left < 0:
+            protagonista.rect.left = 0
+             
+        
+        nivel_actual.draw(pantalla)
+        lista_sprites_activos.draw(pantalla)
+         
+       
+           
+       
+        reloj.tick(60) 
+       
+         
+        pygame.display.flip() 
+           
+  
+    pygame.quit()
+ 
+if _name_ == "_main_":
+    main()
